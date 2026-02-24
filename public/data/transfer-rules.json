@@ -1,0 +1,41 @@
+{
+  "version": "1.2.40.0",
+  "rules": [
+    {
+      "id": "backup-bases",
+      "title": "Back up your base(s)",
+      "detail": "Use the Base Reconstruction Tool. Unbacked bases are left behind.",
+      "kind": "required"
+    },
+    {
+      "id": "backup-vehicles",
+      "title": "Back up your vehicles",
+      "detail": "Use the Vehicle Backup Tool. Disassemble extras if needed.",
+      "kind": "required"
+    },
+    {
+      "id": "bank-valuables",
+      "title": "Store valuables in inventory or bank",
+      "detail": "Inventory, bank contents and Solari transfer.",
+      "kind": "required"
+    },
+    {
+      "id": "clear-marketplace",
+      "title": "Cancel marketplace listings",
+      "detail": "Items left listed do not transfer.",
+      "kind": "recommended"
+    },
+    {
+      "id": "be-in-hagga",
+      "title": "Be in Hagga Basin",
+      "detail": "Transfer can only start from Hagga Basin.",
+      "kind": "required"
+    },
+    {
+      "id": "token-check",
+      "title": "Confirm transfer token and cooldown",
+      "detail": "1 token every 7 days. Return transfer also costs a token.",
+      "kind": "required"
+    }
+  ]
+}

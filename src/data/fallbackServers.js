@@ -1,0 +1,12 @@
+export const fallbackServerSnapshot = {
+  capturedAt: '2026-02-23T19:00:00Z',
+  source: 'embedded-fallback',
+  worlds: [
+    { name: 'Harmony', region: 'NA', datacenter: 'Washington', players: 235, capacity: 1000, status: 'Online', type: 'Official' },
+    { name: 'Pax', region: 'EU', datacenter: 'Amsterdam', players: 156, capacity: 1000, status: 'Online', type: 'Official' },
+    { name: 'Giedi Prime', region: 'NA', datacenter: 'Dallas', players: 612, capacity: 1000, status: 'Online', type: 'Official' },
+    { name: 'Sietch Tabr', region: 'OCE', datacenter: 'Sydney', players: 89, capacity: 750, status: 'Online', type: 'Official' },
+    { name: 'Caladan', region: 'EU', datacenter: 'Frankfurt', players: 1000, capacity: 1000, status: 'Online', type: 'Official' },
+    { name: 'Arrakeen', region: 'SA', datacenter: 'Sao Paulo', players: 42, capacity: 500, status: 'Maintenance', type: 'Official' }
+  ]
+};
