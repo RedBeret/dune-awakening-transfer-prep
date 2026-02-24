@@ -13,7 +13,7 @@ describe('csv import/export', () => {
 
     const csv = snapshotsToCsv([snap]);
     const parsed = csvToSnapshot(csv);
-    expect(parsed.capturedAt).toBe(snap.capturedAt);
+    expect(new Date(parsed.capturedAt).toISOString()).toBe(new Date(snap.capturedAt).toISOString());
     expect(parsed.worlds[0].name).toBe('Harmony');
     expect(parsed.worlds[0].players).toBe(123);
   });
