@@ -2,8 +2,35 @@ import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import { VitePWA } from 'vite-plugin-pwa';
 
+function normalizeBasePath(basePath) {
+  if (!basePath) {
+    return '/';
+  }
+
+  const withLeadingSlash = basePath.startsWith('/') ? basePath : `/${basePath}`;
+  return withLeadingSlash.endsWith('/') ? withLeadingSlash : `${withLeadingSlash}/`;
+}
+
+function getBasePath() {
+  if (process.env.VITE_BASE_PATH) {
+    return normalizeBasePath(process.env.VITE_BASE_PATH);
+  }
+
+  if (process.env.GITHUB_ACTIONS === 'true' && process.env.GITHUB_REPOSITORY) {
+    const [, repo] = process.env.GITHUB_REPOSITORY.split('/');
+
+    if (!repo || repo.toLowerCase().endsWith('.github.io')) {
+      return '/';
+    }
+
+    return `/${repo}/`;
+  }
+
+  return '/';
+}
+
 export default defineConfig({
-  base: process.env.VITE_BASE_PATH || '/',
+  base: getBasePath(),
   plugins: [
     react(),
     VitePWA({

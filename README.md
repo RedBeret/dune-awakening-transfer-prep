@@ -93,7 +93,17 @@ This project uses `VITE_BASE_PATH` for the Vite base path so it can deploy to ei
 
 ## Deploy workflow
 
-The included GitHub Actions workflow publishes the `dist/` folder to GitHub Pages.
+Use **GitHub Actions** as the Pages source (recommended), not classic "Deploy from branch".
+
+Why:
+- this app needs a Vite build step before publishing
+- Actions publishes fresh `dist/` artifacts without committing build output to the repo
+- base path is auto-detected in CI for project pages vs `*.github.io` user/org pages
+
+In repository settings:
+1. Go to **Settings → Pages**
+2. Set **Source** to **GitHub Actions**
+3. Push to `main` or `master` to trigger `.github/workflows/deploy.yml`
 
 ## Import JSON format
 
