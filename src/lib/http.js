@@ -10,10 +10,10 @@ export async function fetchJsonWithRetry(url, options = {}) {
 
   let lastError;
   for (let attempt = 0; attempt <= retries; attempt += 1) {
-    try {
-      const controller = new AbortController();
-      const timer = setTimeout(() => controller.abort(new Error('Timeout')), timeoutMs);
+    const controller = new AbortController();
+    const timer = setTimeout(() => controller.abort(new Error('Timeout')), timeoutMs);
 
+    try {
       if (signal) {
         signal.addEventListener(
           'abort',
@@ -22,8 +22,7 @@ export async function fetchJsonWithRetry(url, options = {}) {
         );
       }
 
-      const response = await fetch(url, { signal: controller.signal, cache: 'no-cache' });
-      clearTimeout(timer);
+      const response = await fetch(url, { signal: controller.signal });
 
       if (!response.ok) {
         throw new Error(`HTTP ${response.status}`);
@@ -38,6 +37,8 @@ export async function fetchJsonWithRetry(url, options = {}) {
         const delay = backoffMs * Math.pow(2, attempt);
         await new Promise((resolve) => setTimeout(resolve, delay));
       }
+    } finally {
+      clearTimeout(timer);
     }
   }
 
