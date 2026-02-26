@@ -7,28 +7,37 @@ export default function ChecklistPanel() {
   const doneCount = Object.values(state.checklist).filter(Boolean).length;
   const total = checklistItems.length;
   const allDone = actions.areChecklistComplete();
+  const progressPct = Math.round((doneCount / total) * 100);
 
   return (
-    <section className="panel">
-      <h2>Transfer preparation checklist</h2>
+    <section className="panel dune-panel">
+      <div className="dune-heading">
+        <p className="dune-kicker">Landsraad Transfer Protocol</p>
+        <h2>Arrakis Readiness Checklist</h2>
+      </div>
       <p className="small">
-        Mark each item as complete. This is local only. It is safe to refresh the page.
+        Complete each rite before crossing worlds. Data is local only, and safe to keep between refreshes.
       </p>
 
+      <div className="spice-progress" role="progressbar" aria-valuemin={0} aria-valuemax={100} aria-valuenow={progressPct}>
+        <div className="spice-progress-bar" style={{ width: `${progressPct}%` }} />
+      </div>
+      <div className="small">Spice alignment: {progressPct}%</div>
+
       <div className="stat-row">
-        <div className="stat">
-          <span className="label">Progress</span>
+        <div className="stat dune-stat">
+          <span className="label">Rites completed</span>
           <span className="value">{doneCount} / {total}</span>
         </div>
-        <div className="stat">
-          <span className="label">Server chooser</span>
-          <span className="value">{allDone ? 'Ready' : 'Pending prep'}</span>
+        <div className="stat dune-stat">
+          <span className="label">Navigator status</span>
+          <span className="value">{allDone ? 'Path is clear' : 'Awaiting rites'}</span>
         </div>
       </div>
 
       <ul className="checklist">
         {checklistItems.map((item) => (
-          <li key={item.id} className="checklist-item">
+          <li key={item.id} className={`checklist-item dune-checklist-item ${state.checklist[item.id] ? 'complete' : ''}`}>
             <div className="check-row">
               <input
                 id={`check-${item.id}`}
@@ -37,7 +46,7 @@ export default function ChecklistPanel() {
                 onChange={() => actions.toggleChecklist(item.id)}
               />
               <div style={{ flex: 1 }}>
-                <label htmlFor={`check-${item.id}`} style={{ color: 'var(--text)', display: 'block' }}>
+                <label htmlFor={`check-${item.id}`} className="dune-item-label">
                   <strong>{item.title}</strong>
                 </label>
                 <div className="small">{item.detail}</div>
@@ -50,7 +59,7 @@ export default function ChecklistPanel() {
 
       {!allDone && (
         <div className="callout warning" style={{ marginTop: 10 }}>
-          Finish the required prep steps before you transfer. This app does not perform the transfer, it only helps you avoid mistakes.
+          Complete the required rites before transfer. This tool does not execute transfers; it helps you avoid costly mistakes.
         </div>
       )}
 

@@ -1,16 +1,30 @@
 {
-  "version": "1.2.40.0",
+  "version": "1.3.5.1",
+  "lastVerified": "2026-02-26",
+  "sources": {
+    "helpCenterTransfers": "https://funcom.helpshift.com/hc/en/4-dune-awakening/faq/74-character-transfers/",
+    "helpCenterBrtGuide": "https://funcom.helpshift.com/hc/en/4-dune-awakening/faq/72-base-reconstruction-tool-guide/",
+    "helpCenterVehicles": "https://funcom.helpshift.com/hc/en/4-dune-awakening/faq/68-stuck-and-lost-vehicles/",
+    "patchNotes_1_2_40_0": "https://duneawakening.com/news/dune-awakening-1-2-40-0-patch-notes/",
+    "patchNotes_chapter3": "https://duneawakening.com/news/dune-awakening-chapter-3-patch-notes/"
+  },
   "rules": [
+    {
+      "id": "eligibility",
+      "title": "Confirm eligibility and destination acceptance",
+      "detail": "Private → Official is not supported. Official → Private is conditional on the destination private server accepting transfers. Destination must be available (not maintenance, not offline, not weekly-active limit).",
+      "kind": "required"
+    },
     {
       "id": "backup-bases",
       "title": "Back up your base(s)",
-      "detail": "Use the Base Reconstruction Tool. Unbacked bases are left behind.",
+      "detail": "Use the Base Reconstruction Tool (Hagga Basin only). Verify backup succeeds: sub-fief console must be on a foundation, and all buildables must be inside sub-fief limits. Tool stores up to 3 bases.",
       "kind": "required"
     },
     {
       "id": "backup-vehicles",
       "title": "Back up your vehicles",
-      "detail": "Use the Vehicle Backup Tool. Disassemble extras if needed.",
+      "detail": "Use the Vehicle Backup Tool. If a vehicle can’t be stored normally, remove inventory or relocate it, or disassemble with a Welding Torch and store parts.",
       "kind": "required"
     },
     {
@@ -18,12 +32,6 @@
       "title": "Store valuables in inventory or bank",
       "detail": "Inventory, bank contents and Solari transfer.",
       "kind": "required"
-    },
-    {
-      "id": "clear-marketplace",
-      "title": "Cancel marketplace listings",
-      "detail": "Items left listed do not transfer.",
-      "kind": "recommended"
     },
     {
       "id": "be-in-hagga",
@@ -34,8 +42,26 @@
     {
       "id": "token-check",
       "title": "Confirm transfer token and cooldown",
-      "detail": "1 token every 7 days. Return transfer also costs a token.",
+      "detail": "Account starts with 1 token, max hold is 1. Token replenishes after 7 days. Any additional transfer, including moving back, costs another token.",
       "kind": "required"
+    },
+    {
+      "id": "confirm-screen",
+      "title": "Read the confirmation screen and complete text entry",
+      "detail": "The game shows key limitations and items that may be lost. You must acknowledge limitations and perform manual text entry to proceed.",
+      "kind": "required"
+    },
+    {
+      "id": "no-disconnect",
+      "title": "Do not disconnect during transfer",
+      "detail": "Exiting the flow or closing the session cancels the transfer. While a character is 'In Transfer', you cannot initiate other transfers on the account.",
+      "kind": "required"
+    },
+    {
+      "id": "spawn-validate",
+      "title": "Post-transfer validation plan",
+      "detail": "After success you spawn at Griffin’s Reach (Hagga Basin). Validate inventory, bank, Solari, and backups in BRT and VBT.",
+      "kind": "recommended"
     }
   ]
 }

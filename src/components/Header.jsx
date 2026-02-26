@@ -32,6 +32,14 @@ export default function Header({ activeTab, onTabChange, checklistComplete }) {
       </div>
       <div className="banner">
         Use this as a preflight tool. It stores your checklist and server snapshots locally in your browser only.
+        {' '}
+        <span>
+          Static guide:
+          {' '}
+          <a href="./transfer-prep.md">transfer-prep.md</a>
+          {' '}
+          (last verified 2026-02-26).
+        </span>
       </div>
     </header>
   );
